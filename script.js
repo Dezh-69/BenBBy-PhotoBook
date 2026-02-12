@@ -66,6 +66,16 @@ function compressImage(file) {
   });
 }
 
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./pwabuilder-sw.js")
+      .then(() => console.log("Service Worker registered"))
+      .catch((err) => console.log("Service Worker failed:", err));
+  });
+}
+
+
 // ═══════════════════════════════════════════════════
 // Upload
 // ═══════════════════════════════════════════════════
