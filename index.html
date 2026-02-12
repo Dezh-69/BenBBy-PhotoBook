@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Beben &amp; Babby — Photo Album</title>
+  <meta name="description"
+    content="A digital photo album for Beben & Babby. Upload memories and flip through them in a beautiful fullscreen book." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Outfit:wght@300;400;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Flipbook Lib -->
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Upload Overlay -->
+  <div id="upload-overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <div class="spinner"></div>
+      <p id="upload-status">Uploading…</p>
+      <div class="progress-bar-track">
+        <div id="progress-bar" class="progress-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="site-header">
+    <div class="header-inner">
+      <h1 class="logo">Beben <span>&amp;</span> Babby</h1>
+    </div>
+
+    <!-- Moved Upload Button Inside Header -->
+    <section id="upload-section">
+      <label for="photo-input" class="upload-btn" id="upload-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="17 8 12 3 7 8" />
+          <line x1="12" y1="3" x2="12" y2="15" />
+        </svg>
+        <span>Add Memories</span>
+      </label>
+      <input type="file" id="photo-input" accept="image/jpeg,image/png,image/webp" multiple hidden />
+    </section>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Album Wrapper -->
+    <div id="flipbook-wrapper" class="hidden">
+      <button id="prev-btn" class="nav-btn nav-prev" aria-label="Previous">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+
+      <div class="book-frame">
+        <div id="flipbook"></div>
+        <div class="book-spine"></div>
+      </div>
+
+      <button id="next-btn" class="nav-btn nav-next" aria-label="Next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="empty-state">
+      <h2>Your Album is Empty</h2>
+      <p>Upload photos to start your story.</p>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

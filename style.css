@@ -1,0 +1,564 @@
+/* ═══════════════════════════════════════════════════
+   Beben & Babby — Photo Album Styles (Romantic edition)
+   ═══════════════════════════════════════════════════ */
+
+/* ── Variables ── */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Patrick+Hand&display=swap');
+
+:root {
+  --primary: #2E7D32;
+  --primary-light: #4CAF50;
+  --primary-dark: #1B5E20;
+  --gold: #D4AF37;
+  --gold-shiny: #FFD700;
+  --cream: #FFF8F0;
+  --cream-dark: #F5ECDF;
+  --text: #5D4037;
+  /* Warmer text */
+  --rose: #E91E63;
+  --font-display: 'Dancing Script', cursive;
+  --font-body: 'Patrick Hand', cursive;
+}
+
+/* ── Stickers ── */
+.sticker-heart {
+  position: absolute;
+  font-size: 2rem;
+  color: #E91E63;
+  opacity: 0.9;
+  z-index: 25;
+  /* Above polaroid hover */
+  pointer-events: none;
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
+  animation: floatHeart 3s ease-in-out infinite alternate;
+}
+
+.sticker-doodle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.6;
+  z-index: 22;
+  pointer-events: none;
+}
+
+@keyframes floatHeart {
+  from {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  to {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* App mode */
+
+  /* Green Confetti Background */
+  background-image:
+    radial-gradient(#AED581 15%, transparent 16%),
+    /* Light Green */
+    radial-gradient(#DCEDC8 15%, transparent 16%),
+    /* Pale Green */
+    radial-gradient(#C8E6C9 15%, transparent 16%);
+  /* Mint Green */
+  background-size: 60px 60px;
+  background-position: 0 0, 20px 20px, 40px 40px;
+}
+
+/* ... existing code ... */
+
+/* Tape - Washi Style Base */
+.tape {
+  position: absolute;
+  width: 35%;
+  height: 24px;
+  top: -12px;
+  left: 32%;
+  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.3) 0, rgba(255, 255, 255, 0.3) 5px, rgba(255, 255, 255, 0.1) 5px, rgba(255, 255, 255, 0.1) 10px);
+  transform: rotate(-3deg);
+  z-index: 5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0.95;
+}
+
+.tape-pink {
+  background-color: #F06292;
+}
+
+.tape-blue {
+  background-color: #4FC3F7;
+}
+
+.tape-yellow {
+  background-color: #FFD54F;
+}
+
+.tape-green {
+  background-color: #AED581;
+}
+
+/* Scatter effect override for variety */
+#site-header {
+  position: relative;
+  width: 100%;
+  padding: 1rem 1rem 0.5rem;
+  z-index: 10;
+  background: rgba(255, 248, 240, 0.95);
+  backdrop-filter: blur(5px);
+  text-align: center;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(46, 125, 50, 0.1);
+}
+
+#site-header .header-inner {
+  text-align: center;
+}
+
+#site-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--primary);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+#site-header h1 span {
+  color: var(--rose);
+}
+
+/* ── Upload Area (Inside Header) ── */
+#upload-section {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 101;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem 1.2rem;
+  background: linear-gradient(135deg, #fff, #f9f9f9);
+  color: var(--primary);
+  border: 1px solid var(--primary-light);
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.15);
+  transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.upload-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(46, 125, 50, 0.25);
+}
+
+.upload-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Main Book Container ── */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+#flipbook-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Optimized: 75% width per request */
+  width: 75%;
+  max-width: 1200px;
+  height: 92%;
+  padding: 0;
+  flex-grow: 1;
+}
+
+/* ── Book Frame (The "Cover") ── */
+.book-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(135deg, rgba(93, 64, 55, 0.95), rgba(62, 39, 35, 0.98)),
+    url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%233E2723' fill-opacity='0.4'%3E%3Cpath d='M0 0h20L0 20z'/%3E%3C/g%3E%3C/svg%3E");
+  background-blend-mode: multiply;
+  border-radius: 4px 12px 12px 4px;
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.05),
+    inset 4px 0 10px rgba(0, 0, 0, 0.5);
+  /* Spine shadow */
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#flipbook {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 2px 8px 8px 2px;
+  overflow: hidden;
+  perspective: 2500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.book-spine {
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 50%;
+  width: 12px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg,
+      rgba(62, 39, 35, 1),
+      rgba(93, 64, 55, 0.8) 20%,
+      rgba(141, 110, 99, 0.4) 50%,
+      rgba(93, 64, 55, 0.8) 80%,
+      rgba(62, 39, 35, 1));
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Page Styles ── */
+.page {
+  background-color: var(--cream);
+  /* Paper Texture */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 30px rgba(139, 69, 19, 0.05);
+  /* Warm inner shadow */
+}
+
+.page.-left {
+  box-shadow: inset -30px 0 50px -20px rgba(0, 0, 0, 0.15), inset 0 0 20px rgba(139, 69, 19, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.page.-right {
+  box-shadow: inset 30px 0 50px -20px rgba(0, 0, 0, 0.15), inset 0 0 20px rgba(139, 69, 19, 0.05);
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Subtle corner decoration */
+.page::before {
+  content: '♥';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 14px;
+  color: var(--primary);
+  opacity: 0.1;
+  font-family: var(--font-body);
+  pointer-events: none;
+}
+
+.page.-left::before {
+  left: 10px;
+  right: auto;
+}
+
+/* ── Content: 2 Photos Per Page ── */
+/* ── Content: 2 Photos Per Page ── */
+.scrapbook-layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2% 3%;
+  gap: 1.5rem;
+}
+
+.polaroid {
+  display: block;
+  position: relative;
+  background: #FFFDF5;
+  /* Warm shiny cream instead of plain white */
+  padding: 12px 12px 45px;
+  /* Larger bottom for captions */
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  /* More depth */
+  border: 1px solid rgba(233, 30, 99, 0.1);
+  /* Subtle pink border */
+  width: 92%;
+  max-width: 550px;
+  min-height: 200px;
+  transform-origin: center;
+  z-index: 2;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 700;
+  /* BOLD TEXT everywhere inside */
+  color: #4E342E;
+}
+
+.polaroid:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  z-index: 20;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.polaroid img {
+  width: 100%;
+  height: auto;
+  max-height: 40vh;
+  /* Capped */
+  object-fit: contain;
+  display: block;
+  background: #fff;
+  /* Photo itself on white */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  /* Subtle inner border */
+}
+
+/* Scatter effect */
+.polaroid:nth-child(1) {
+  transform: rotate(-2deg);
+  align-self: flex-start;
+}
+
+.polaroid:nth-child(2) {
+  transform: rotate(2deg);
+  align-self: flex-end;
+}
+
+/* Tape - Washi Style */
+.tape {
+  position: absolute;
+  width: 35%;
+  /* Wider tape */
+  height: 22px;
+  top: -10px;
+  left: 32%;
+  background-color: rgba(233, 30, 99, 0.25);
+  /* Darker pink */
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255, 255, 255, 0.5) 5px, rgba(255, 255, 255, 0.5) 10px);
+  transform: rotate(-3deg);
+  z-index: 5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
+}
+
+/* ── Cover ── */
+.page.cover-page {
+  background: #1B5E20;
+  /* Deep Green */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border: 6px double #D4AF37;
+  /* Double Border */
+  outline: 12px solid #1B5E20;
+  outline-offset: -18px;
+  text-align: center;
+}
+
+/* Gold Foil Effect */
+.page.cover-page h2 {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to bottom right, #FFD700 20%, #FDB931 40%, #D4AF37 60%, #FFD700 80%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow:
+    1px 1px 2px rgba(0, 0, 0, 0.4),
+    0 0 10px rgba(255, 215, 0, 0.4);
+  /* Glow */
+}
+
+.page.cover-page p {
+  font-family: var(--font-body);
+  color: #E8F5E9;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+/* ── Nav & Utility ── */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--primary);
+  cursor: pointer;
+  opacity: 0.8;
+  z-index: 200;
+  transition: .2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.nav-prev {
+  left: 24px;
+}
+
+.nav-next {
+  right: 24px;
+}
+
+.nav-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.empty-state {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--primary-light);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  #upload-section {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin-top: 0.5rem;
+  }
+
+  #site-header {
+    flex-direction: column;
+  }
+
+  .book-spine {
+    display: none;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .scrapbook-layout {
+    padding: 4%;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .polaroid {
+    width: 95%;
+    margin: 0.5rem 0;
+    transform: rotate(0) !important;
+    align-self: center !important;
+  }
+
+  .book-frame {
+    padding: 6px;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  #flipbook {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  body {
+    overflow: auto;
+    height: auto;
+  }
+}
