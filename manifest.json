@@ -1,12 +1,24 @@
 {
   "background_color": "#ffffff",
-  "description": "A digital photo album for Beben &amp; Babby. Upload memories and flip through them in a beautiful fullscreen book.",
+  "description": "A digital photo album for Beben & Babby. Upload memories and flip through them in a beautiful fullscreen book.",
   "dir": "ltr",
   "display": "standalone",
   "name": "BENBBY",
   "orientation": "any",
-  "scope": "/",
+  "scope": "./",
   "short_name": "BENBBY",
-  "start_url": "/",
-  "theme_color": "#ffffff"
+  "start_url": "./",
+  "theme_color": "#8fcf9a",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
